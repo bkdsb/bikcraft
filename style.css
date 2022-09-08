@@ -1,0 +1,175 @@
+body {
+  font-family: JetBrains Mono;
+  margin: 0;
+  background: #f7f7f7;
+  display: grid;
+  gap: 3.75rem;
+  justify-items: center;
+  margin-top: 3.75rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0px;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+/* Porque o grid havia sido aplicado no body, o header estava sendo centralizado, então é necessário aplicar o display:grid; aqui e justificar os itens normalmente */
+
+.header {
+  display: grid;
+  justify-items: center;
+  gap: 3.75rem;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+/* É necessário display: block; para o 'a' pegar o padding */
+.menu a {
+  display: block;
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  color: #000;
+  text-transform: uppercase;
+  border: 0.12rem solid transparent;
+}
+
+/* Para corrigir o problema dos itens pularem, é por causa da borda, basta pintar o item pai do hover de transparent ou da cor do conteúdo */
+
+.menu a:hover {
+  border: 0.12rem solid #e21;
+}
+
+.conteudo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+}
+
+.introducao {
+  background: #fff;
+  padding: 40px;
+  text-align: right;
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  align-content: center;
+  justify-items: end;
+}
+
+.introducao h1 {
+  font-size: 2rem;
+}
+
+/* O pseudo elemento sempre deve ter um content: ""; */
+.introducao::before {
+  content: "";
+  width: 3.75rem;
+  height: 0.25rem;
+  background: #e21;
+  position: absolute;
+  top: 1.87rem;
+  right: -1.87rem;
+}
+
+.botao {
+  background: #e21;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.botao:hover {
+  background: #900;
+}
+
+.subtitulo {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.2);
+  text-align: right;
+  padding: 2.5rem;
+  align-self: center;
+  background-image: url("./img/onda.svg");
+}
+
+.vantagens {
+  background: #fff;
+  padding: 2.5rem;
+}
+
+/* DUAS COLUNAS 
+UMA QUE PEGA A IMAGEM
+E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
+*/
+
+/* O VALOR #AUTO pega exatamente o tamanho do conteúdo
+   Para distribuir o restante usa-se 1fr
+*/
+
+/* Quando quebra o item para a próxima coluna, ele coloca o conteúdo inteiro nela */
+
+/* #DEFININDO O VALOR DOS GAPS */
+/* #O primeiro valor para a distancia entre as linhas e o segundo para as colunas */
+
+/* padding esta somando, ao todo 60px nas laterais, 40px entre os itens na vertical */
+
+.vantagens-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem 1.25rem;
+  padding: 1.25rem;
+  border-left: 0.24rem solid transparent;
+}
+
+.vantagens-item:hover {
+  border-color: #e21;
+}
+
+.vantagens-item:nth-child(odd):hover {
+  background: #f7f7f7;
+}
+
+.vantagens-item p {
+  grid-column: 2;
+}
+
+/* Para expandir o item afetado pelo justify-content: center;
+   Só definir um width de 100%
+*/
+
+.rodape {
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
