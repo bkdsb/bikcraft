@@ -99,6 +99,14 @@ p {
   right: -1.87rem;
 }
 
+/* Tornando a imagem responsiva com o object fit:cover, caso específico */
+
+.introducao-cover img {
+  object-fit: cover;
+  height: 100%;
+}
+
+
 .botao {
   background: #e21;
   color: #fff;
@@ -111,6 +119,8 @@ p {
   background: #900;
 }
 
+/* Para quebrar uma palavra com CSS e o layout se adaptar responsivamente, word-break: break-all; */
+
 .subtitulo {
   font-size: 4rem;
   text-transform: uppercase;
@@ -119,6 +129,7 @@ p {
   padding: 2.5rem;
   align-self: center;
   background-image: url("./img/onda.svg");
+  /* word-break: break-all; Uma possível solução para quebrar as palavras com CSS */
 }
 
 .vantagens {
@@ -172,4 +183,66 @@ E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
   text-align: center;
   padding: 2.5rem;
   box-sizing: border-box;
+}
+
+/* Se usa media-querie em pontos de quebra, chamado break-points, no caso, onde o próprio site "quebra" o layout */
+
+/* Geralmente se usa embaixo do próprio elemento editado, que no caso, seria a classe conteudo, onde está o grid, mas para analisar toda a mudança de uma vez só estou fazendo aqui */
+
+/* Se apenas um conteúdo não fica responsivo, criamos uma classe e editamos especificamente, nesse caso, o conteudo vantagem */
+
+@media (max-width: 1000px) {
+  .conteudo-vantagem {
+    grid-template-columns: 1fr;
+  }
+
+  /* Como o subtitulo, está alinhado a direita, vamos alinha-lo ao centro */
+  .subtitulo {
+    text-align: center;
+  }
+}
+
+/* Abaixo de 600px os textos começaram ficar mal estruturados */
+
+@media (max-width: 600px) {
+
+  /* Diminuir também os gaps, mais responsividade ao tamanho compatível */
+  body {
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .header {
+    gap: 30px;
+  }
+
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  /* Alinhamento do texto e porque alguns itens foram definidos como justify-items: end; mudamos para start para alinhar ao começo */
+  .introducao {
+    text-align: left;
+    justify-items: start;
+  }
+
+  /* Sempre tomar cuidado com itens com posições absolutas, ele estava estourando o site, o detalhezinho vermelho, então removido */
+  .introducao::before {
+    display: none;
+  }
+  .subtitulo {
+    font-size: 3rem;
+  }
+}
+
+/* Subtitulo e fonte "quebrando" o site, ajustando mais uma vez e as fontes também */
+
+@media (max-width: 400px) {
+  .subtitulo {
+    font-size: 2rem;
+  }
+
+p {
+  font-size: 1rem;
+}
 }
