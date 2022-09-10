@@ -1,11 +1,36 @@
+:root {
+  --cor-primaria: #e21;
+  --cor-primaria-escura: #900;
+  --fundo-1: #f7f7f7;
+  --fundo-2: #ffffff;
+  --texto: #000000;
+  --subtitulo: rgba(0, 0, 0, 0.2)
+  --onda: url("./img/onda-clara.svg");
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo-1: #111111;
+    --fundo-2: #000000;
+    --texto: #ffffff;
+    --subtitulo:  rgba(255, 255, 255, 0.2);
+    --onda: url("./img/onda-escura.svg");
+    
+  }
+}
+
+
 body {
   font-family: JetBrains Mono;
   margin: 0;
-  background: #f7f7f7;
+  background: var(--fundo-1);
   display: grid;
   gap: 3.75rem;
   justify-items: center;
   margin-top: 3.75rem;
+  color: var(--texto);
 }
 
 img {
@@ -53,10 +78,10 @@ p {
 /* É necessário display: block; para o 'a' pegar o padding */
 .menu a {
   display: block;
-  background: #fff;
+  background: var(--fundo-2);
   padding: 1rem 2rem;
   border-radius: 0.25rem;
-  color: #000;
+  color: var(--texto);
   text-transform: uppercase;
   border: 0.12rem solid transparent;
 }
@@ -64,7 +89,7 @@ p {
 /* Para corrigir o problema dos itens pularem, é por causa da borda, basta pintar o item pai do hover de transparent ou da cor do conteúdo */
 
 .menu a:hover {
-  border: 0.12rem solid #e21;
+  border: 0.12rem solid var(--cor-primaria);
 }
 
 .conteudo {
@@ -74,7 +99,7 @@ p {
 }
 
 .introducao {
-  background: #fff;
+  background: var(--fundo-2);
   padding: 40px;
   text-align: right;
   position: relative;
@@ -93,7 +118,7 @@ p {
   content: "";
   width: 3.75rem;
   height: 0.25rem;
-  background: #e21;
+  background: var(--cor-primaria);
   position: absolute;
   top: 1.87rem;
   right: -1.87rem;
@@ -108,15 +133,15 @@ p {
 
 
 .botao {
-  background: #e21;
-  color: #fff;
+  background: var(--cor-primaria);
+  color: #ffffff;
   padding: 1rem 2rem;
   border-radius: 0.25rem;
   text-transform: uppercase;
 }
 
 .botao:hover {
-  background: #900;
+  background: var(--cor-primaria-escura);
 }
 
 /* Para quebrar uma palavra com CSS e o layout se adaptar responsivamente, word-break: break-all; */
@@ -124,16 +149,16 @@ p {
 .subtitulo {
   font-size: 4rem;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--subtitulo);
   text-align: right;
   padding: 2.5rem;
   align-self: center;
-  background-image: url("./img/onda.svg");
+  background-image: var(--onda);
   /* word-break: break-all; Uma possível solução para quebrar as palavras com CSS */
 }
 
 .vantagens {
-  background: #fff;
+  background: var(--fundo-2);
   padding: 2.5rem;
 }
 
@@ -162,11 +187,11 @@ E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
 }
 
 .vantagens-item:hover {
-  border-color: #e21;
+  border-color: var(--cor-primaria);
 }
 
 .vantagens-item:nth-child(odd):hover {
-  background: #f7f7f7;
+  background: var(--fundo-1);
 }
 
 .vantagens-item p {
@@ -179,7 +204,7 @@ E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
 
 .rodape {
   width: 100%;
-  background: #fff;
+  background: var(--fundo-2);
   text-align: center;
   padding: 2.5rem;
   box-sizing: border-box;
@@ -230,6 +255,7 @@ E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
   .introducao::before {
     display: none;
   }
+
   .subtitulo {
     font-size: 3rem;
   }
@@ -242,7 +268,7 @@ E OUTRA QUE PEGA O TÍTULO E O CONTEÚDO
     font-size: 2rem;
   }
 
-p {
-  font-size: 1rem;
-}
+  p {
+    font-size: 1rem;
+  }
 }
